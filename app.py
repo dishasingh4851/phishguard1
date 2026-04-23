@@ -6,7 +6,6 @@ from urllib.parse import urlparse
 import difflib
 import csv
 import os
-print("FILES:", os.listdir())
 from datetime import datetime
 import requests
 
@@ -15,10 +14,7 @@ app = Flask(__name__)
 # ================================
 # LOAD MODEL
 # ================================
-model_path = os.path.join(os.getcwd(), "model2.pkl")
-
-with open(model_path, "rb") as f:
-    model = pickle.load(f)
+model = pickle.load(open("model2.pkl", "rb"))
 
 # ================================
 # CSV FILE SETUP
@@ -99,13 +95,13 @@ def is_valid_url(url):
 # ================================
 def is_url_reachable(url):
     try:
-        response = requests.get(url, timeout=5)
-        return response.status_code < 400
+        requests.head(url, timeout=5)
+        return True
     except:
         try:
             url = url.replace("https://", "http://")
-            response = requests.get(url, timeout=5)
-            return response.status_code < 400
+            requests.head(url, timeout=5)
+            return True
         except:
             return False
 
@@ -154,10 +150,10 @@ def home():
 # ================================
 @app.route('/predict', methods=['POST'])
 def predict():
-    user_input = request.form['url'].strip()
+    user_input = request.form['url']
 
     temp_url = user_input
-    if not temp_url.startswith(("http://", "https://")):
+    if not temp_url.startswith("http"):
         temp_url = "https://" + temp_url
 
     # INVALID URL
