@@ -1,0 +1,22 @@
+URL,Result,Confidence,Timestamp
+https://amazon.in,Legitimate,0.38,2026-04-14 11:11:21.732545
+"https://www,banasthali.org",Phishing,0.82,2026-04-14 11:54:35.497864
+"https://www,banasthali.org",Phishing,0.82,2026-04-14 11:54:49.406030
+https://www.banasthali.org/,Legitimate,0.42,2026-04-14 11:56:10.356290
+https://g00gle.com,Phishing,0.99,2026-04-14 11:58:08.336396
+https://neas.co.id/lonos,Phishing,0.64,2026-04-14 11:59:42.974637
+https://www.banasthali.org,Legitimate,0.42,2026-04-14 12:02:37.658926
+https://amazon.in,Legitimate,0.38,2026-04-14 12:15:53.205202
+https://chatgpt.com/,Legitimate,0.38,2026-04-14 12:16:46.359350
+https://colab.research.google.com/,Legitimate,0.28,2026-04-14 12:17:28.180676
+https://gemini.google.com/,Legitimate,0.35,2026-04-14 12:18:44.908116
+https://gamma.app/?gad_campaignid=23694380130&gad_source=1&gbraid=0AAAABBYt2B2khWqKWtkxHlmkQzod6p8mX&gclid=Cj0KCQjwqPLOBhCiARIsAKRMPZq5MhIO8_TXzMV2g11ybA7Se5LrWN7m8hEsvmJgLtHWiGfOZNBq06oaAvGGEALw_wcB&gspk=MjA5Nzc3ODkzN2Uw&gsxid=n6DbxpWNByzEkR&ps_partner_key=MjA5Nzc3ODkzN2Uw&ps_xid=n6DbxpWNByzEkR&pscd=try.gamma.app&utm_content=2097778937e0&utm_medium=affiliate&utm_source=ps,Phishing,0.92,2026-04-14 12:19:30.683536
+https://gamma.app/?gad_campaignid=23694380130&gad_source=1&gbraid=0AAAABBYt2B2khWqKWtkxHlmkQzod6p8mX&gclid=Cj0KCQjwqPLOBhCiARIsAKRMPZq5MhIO8_TXzMV2g11ybA7Se5LrWN7m8hEsvmJgLtHWiGfOZNBq06oaAvGGEALw_wcB&gspk=MjA5Nzc3ODkzN2Uw&gsxid=n6DbxpWNByzEkR&ps_partner_key=MjA5Nzc3ODkzN2Uw&ps_xid=n6DbxpWNByzEkR&pscd=try.gamma.app&utm_content=2097778937e0&utm_medium=affiliate&utm_source=ps,Phishing,0.92,2026-04-14 12:20:03.724658
+https://www.geeksforgeeks.org/,Legitimate,0.38,2026-04-14 12:24:51.885188
+https://www.cbse.gov.in/,Legitimate,0.37,2026-04-14 12:26:27.971280
+https://rajeduboard.rajasthan.gov.in/,Legitimate,0.37,2026-04-14 12:26:58.288716
+https://gamma.app/,Phishing,0.64,2026-04-14 12:27:56.103080
+https://www.cbse.gov.in/,Legitimate,0.37,2026-04-23 15:38:57.841834
+https://www.google.com,Legitimate,0.35,2026-04-23 15:53:44.240711
+http://www.banasthali.org/,Legitimate,0.39,2026-04-23 15:54:03.093825
+https://www.cbse.gov.in/,Legitimate,0.37,2026-04-23 15:55:30.400623

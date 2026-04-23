@@ -1,0 +1,8 @@
+flask
+numpy
+scikit-learn
+requests
+gunicorn
+beautifulsoup4
+python-whois
+xgboost
