@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard</title>
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #ffffff;
+            --bg-secondary: #f4f6f9;
+            --text-primary: #1a2b49;
+            --text-muted: #555;
+            --hero-text: #666;
+            --card-bg: #ffffff;
+            --card-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            --nav-bg: #000000;
+            --nav-text: #ffffff;
+            --footer-bg: #000000;
+            --footer-text: #ffffff;
+            --input-border: #ccc;
+            --input-bg: #ffffff;
+            --input-text: #333;
+            --wave-grad: linear-gradient(120deg, #4b3df0 0%, #5f4bff 35%, #6f63ff 60%, #4b3df0 100%);
+            --wave-before-bg: #9fa8ff;
+            --toggle-bg: #f0f0f0;
+            --toggle-text: #333333;
+            --toggle-border: rgba(0,0,0,0.15);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --text-primary: #e8eaf6;
+            --text-muted: #aaaaaa;
+            --hero-text: #aaaaaa;
+            --card-bg: #1e1e30;
+            --card-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            --nav-bg: #050510;
+            --nav-text: #e8eaf6;
+            --footer-bg: #050510;
+            --footer-text: #e8eaf6;
+            --input-border: #3a3a5c;
+            --input-bg: #1a1a2e;
+            --input-text: #e8eaf6;
+            --wave-grad: linear-gradient(120deg, #1a0a6b 0%, #2a1a9a 35%, #1e1270 60%, #1a0a6b 100%);
+            --wave-before-bg: #1a0a6b;
+            --toggle-bg: #2a2a4a;
+            --toggle-text: #e8eaf6;
+            --toggle-border: rgba(255,255,255,0.15);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+        }
+
+        .navbar {
+            background: var(--nav-bg);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--nav-text) !important;
+            font-size: 20px;
+        }
+
+        .nav-link {
+            color: var(--nav-text) !important;
+            margin-right: 15px;
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--toggle-bg);
+            border: 1px solid var(--toggle-border);
+            border-radius: 50px;
+            padding: 6px 16px 6px 12px;
+            cursor: pointer;
+            color: var(--toggle-text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            outline: none;
+            user-select: none;
+            transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.15s;
+        }
+
+        .theme-toggle:hover { transform: scale(1.05); }
+        .theme-toggle:active { transform: scale(0.97); }
+
+        .theme-toggle .toggle-icon {
+            font-size: 20px;
+            display: inline-block;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s;
+            line-height: 1;
+        }
+
+        .theme-toggle:hover .toggle-icon {
+            transform: rotate(25deg) scale(1.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--bg);
+        }
+
+        .hero h1 { font-weight: 600; color: var(--text-primary); }
+        .hero p { color: var(--hero-text); }
+
+        .hero img {
+            width: 300px;
+            margin: 30px 0;
+            border-radius: 12px;
+        }
+
+        .search-box {
+            max-width: 700px;
+            margin: auto;
+            display: flex;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid var(--input-border);
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            outline: none;
+            background: var(--input-bg);
+            color: var(--input-text);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        .search-box input::placeholder { color: var(--text-muted); }
+
+        .search-box button {
+    background: #f4b400;
+    border: none;
+    padding: 15px 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+    margin-left: 5px;   /* 👈 ADD THIS LINE */
+}
+        .search-box button:hover { background: #d9a200; }
+     .stats{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:50px;
+}
+
+.stat-box{
+text-align:center;
+}
+
+.stat-box h2{
+font-size:32px;
+color:#4f6ef7;
+margin:0;
+}
+
+        .wave {
+            position: relative;
+            background: var(--wave-grad);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            overflow: hidden;
+        }
+
+        .wave::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: var(--wave-before-bg);
+            transform: skewY(-3deg);
+            z-index: 0;
+            transition: background 0.35s ease;
+        }
+
+        .wave > * { position: relative; z-index: 1; }
+        .wave h2 { font-weight: 600; margin-bottom: 20px; }
+        .wave p { max-width: 900px; margin: auto; line-height: 1.8; opacity: 0.92; }
+
+        .learn-btn {
+            margin-top: 20px;
+            display: inline-block;
+            color: yellow;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .features {
+            background: var(--bg-secondary);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .feature-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 12px;
+            width: 300px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, background 0.35s, box-shadow 0.35s;
+        }
+
+        .feature-card:hover { transform: translateY(-8px); }
+
+        /* Updated: icon now matches the wave gradient */
+        .icon {
+            width: 60px;
+            height: 60px;
+            background: var(--wave-grad);
+            color: white;
+            font-size: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            transition: background 0.35s ease;
+        }
+
+        .feature-card h3 { font-size: 20px; margin-bottom: 10px; color: var(--text-primary); }
+        .feature-card p { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
+
+        .footer {
+            background: var(--footer-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 15px;
+            transition: background 0.35s, color 0.35s;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">PhishGuard 🔐</a>
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">
+        <span class="toggle-icon" id="themeIcon">☀️</span>
+        <span id="themeLabel">Light</span>
+    </button>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Don't get Hooked by a Phish again ! 👮</h1>
+    <p>Don't get caught in a phishing trap. Happens 79 million times a year but with us, you can protect yourself.</p>
+    <img src="https://phishr.vercel.app/static/media/Phishing-account.829592d40e29d8dc5753.gif" alt="phishing">
+   <form action="/predict" method="POST">
+    <div class="search-box">
+    <input type="text" id="urlInput" name="url"
+        placeholder="Enter website address or URL"
+        value="{{ url if url else '' }}" required>
+
+    <button type="submit">SCAN URL</button>
+    <button type="button" onclick="clearInput()" style="background:#6c757d;">CLEAR</button>
+</div>
+</form>
+
+<!-- RESULT DISPLAY -->
+{% if result %}
+    <div id="resultSection" style="margin-top:20px; font-size:18px; font-weight:600; color: {{color}};">
+        
+        🔗 Scanned URL:
+        <div style="margin-top:5px; font-size:16px; color:#555;">
+            {{ url }}
+        </div>
+
+        <br>
+
+        {{ result }}
+
+    </div>
+{% endif %}
+</section>
+<div class="stats">
+
+<div class="stat-box">
+<h2>{{ total }}</h2>
+<p>URLs Scanned</p>
+</div>
+
+<div class="stat-box">
+<h2>{{ phishing }}</h2>
+<p>Phishing Detected</p>
+</div>
+
+<div class="stat-box">
+<h2>{{ legit }}</h2>
+<p>Legitimate URLs</p>
+</div>
+
+</div>
+<!-- How it works -->
+<section class="wave">
+    <h2>How does it Work ?</h2>
+    <p>
+        This website helps you detect phishing URLs. Phishing is a type of cyber attack where attackers
+        deceive individuals into providing sensitive information as trustworthy entities. Our tool uses
+        algorithms to analyze URLs and determine whether they are potentially dangerous. Stay safe online
+        by verifying links before you click!
+    </p>
+    <a href="#" class="learn-btn">LEARN MORE</a>
+</section>
+
+<!-- Features -->
+<section class="features">
+    <h2>Features</h2>
+    <div class="feature-container">
+        <div class="feature-card">
+            <div class="icon">✔</div>
+            <h3>Real-time URL Analysis</h3>
+            <p>Our tool provides instant analysis of URLs to help you identify phishing attempts.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">✔</div>
+            <h3>Easy-to-use Interface</h3>
+            <p>User-friendly interface allows you to quickly and easily check URLs.</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">✔</div>
+            <h3>Secure and Reliable</h3>
+            <p>Our platform ensures your data is secure and provides reliable results.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+    Good To See You ❤️
+</div>
+
+<script>
+    let isDark = false;
+
+    function toggleTheme() {
+        isDark = !isDark;
+        const html = document.documentElement;
+        const icon = document.getElementById('themeIcon');
+        const label = document.getElementById('themeLabel');
+
+        if (isDark) {
+            html.setAttribute('data-theme', 'dark');
+            icon.textContent = '🌙';
+            label.textContent = 'Dark';
+        } else {
+            html.setAttribute('data-theme', 'light');
+            icon.textContent = '☀️';
+            label.textContent = 'Light';
+        }
+    }
+    function clearInput() {
+    // clear input
+    document.getElementById("urlInput").value = "";
+
+    // hide result
+    let result = document.getElementById("resultSection");
+    if (result) {
+        result.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html> 
