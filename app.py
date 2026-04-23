@@ -99,13 +99,13 @@ def is_valid_url(url):
 # ================================
 def is_url_reachable(url):
     try:
-        requests.head(url, timeout=5)
-        return True
+        response = requests.get(url, timeout=5)
+        return response.status_code < 400
     except:
         try:
             url = url.replace("https://", "http://")
-            requests.head(url, timeout=5)
-            return True
+            response = requests.get(url, timeout=5)
+            return response.status_code < 400
         except:
             return False
 
@@ -154,10 +154,10 @@ def home():
 # ================================
 @app.route('/predict', methods=['POST'])
 def predict():
-    user_input = request.form['url']
+    user_input = request.form['url'].strip()
 
     temp_url = user_input
-    if not temp_url.startswith("http"):
+    if not temp_url.startswith(("http://", "https://")):
         temp_url = "https://" + temp_url
 
     # INVALID URL
